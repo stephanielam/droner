@@ -1,2 +1,2 @@
-module RentersHelper
+module ClientsHelper
 end

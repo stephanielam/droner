@@ -1,4 +1,4 @@
-class Renter < ActiveRecord::Base
+class Client < ActiveRecord::Base
   has_many :rentals
   has_many :robots, through: :rentals
 

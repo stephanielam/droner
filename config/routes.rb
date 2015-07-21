@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "robots#index"
   resources :robots
-  resources :renters do
+  resources :clients do
     resources :rentals, except: [:destroy]
   end
 

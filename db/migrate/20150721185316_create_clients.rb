@@ -1,6 +1,6 @@
-class CreateRenters < ActiveRecord::Migration
+class CreateClients < ActiveRecord::Migration
   def change
-    create_table :renters do |t|
+    create_table :clients do |t|
       t.string :username
       t.string :password
 

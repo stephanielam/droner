@@ -1,36 +1,37 @@
-class RentersController < ApplicationController
+class ClientsController < ApplicationController
+
   def index
-    @renters = Renter.all
+    @clients = Client.all
   end
 
   def new
-    @rental = Renter.new
+    @rental = Client.new
   end
 
   def create
-    @rental = Renter.create(rental_params)
-    redirect_to renters_path
+    @rental = Client.create(rental_params)
+    redirect_to clients_path
   end
 
   def destroy
-    @rental = Renter.find(params[:id])
+    @rental = Client.find(params[:id])
     @rental.destroy
     flash[:success] = "Your robo was terminated."
-    redirect_to renters_path
+    redirect_to clients_path
   end
 
   def edit
-    @rental = Renter.find(params[:id])
+    @rental = Client.find(params[:id])
   end
 
   def update
-    @rental = Renter.find(params[:id])
+    @rental = Client.find(params[:id])
     @rental.update(rental_params)
-    redirect_to renters_path
+    redirect_to clients_path
   end
   
   def show
-    @rental = Renter.find(params[:id]) 
+    @rental = Client.find(params[:id]) 
   end
 
   private

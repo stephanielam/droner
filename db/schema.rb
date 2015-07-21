@@ -13,18 +13,18 @@
 
 ActiveRecord::Schema.define(version: 20150721185516) do
 
-  create_table "rentals", force: true do |t|
-    t.integer  "renter_id"
-    t.integer  "robot_id"
-    t.datetime "checkin"
-    t.datetime "checkout"
+  create_table "clients", force: true do |t|
+    t.string   "username"
+    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "renters", force: true do |t|
-    t.string   "username"
-    t.string   "password"
+  create_table "rentals", force: true do |t|
+    t.integer  "client_id"
+    t.integer  "robot_id"
+    t.datetime "checkout"
+    t.datetime "checkin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

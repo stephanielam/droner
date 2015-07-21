@@ -1,10 +1,10 @@
 class CreateRentals < ActiveRecord::Migration
   def change
     create_table :rentals do |t|
-      t.integer :renter_id
+      t.integer :client_id
       t.integer :robot_id
-      t.datetime :checkin
       t.datetime :checkout
+      t.datetime :checkin
 
       t.timestamps
     end

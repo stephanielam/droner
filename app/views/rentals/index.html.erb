@@ -1,0 +1,22 @@
+#admin
+<h1>Rental List</h1>
+<%= link_to "Back to listings!", robots_path %>
+
+<table>
+<thead>
+  <th>Robot ID</th>
+  <th>Renter ID</th>
+  <th>checkin</th>
+  <th>Checkout</th>
+</thead>
+<tbody>
+<% @rentals.each do |rental| %>
+  <tr>
+    <td> <%= rental.robot_id %> </td>
+    <td> <%= rental.renter_id %> </td>
+    <td> <%= rental.checkin %> </td>
+    <td> <%= rental.checkout %> </td>
+  </tr>
+<% end %>
+</tbody>
+</table>

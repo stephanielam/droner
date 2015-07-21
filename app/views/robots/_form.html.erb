@@ -1,0 +1,16 @@
+<h1>Create new robo</h1>
+<%= form_for @robot do |f| %>
+  <div>
+  <%= f.label :name %> 
+  <%= f.text_field :name %>
+  </div>
+  <div>
+  <%= f.label :model %> 
+  <%= f.text_field :model %>
+  </div>
+  <div>
+  <%= f.label :price %> 
+  <%= f.text_field :price %>
+  </div>
+  <%= f.submit %>
+<% end %>

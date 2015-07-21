@@ -1,0 +1,30 @@
+<h1>RAM'N DRIVE ROBO INDEX</h1>
+<h3>Admin Pages</h3>
+<%= link_to "New bang!", new_robot_path %>
+<br>
+<h3>Renter pages</h3>
+<%= link_to "New Renter!", new_renter_path %>
+
+<table>
+<thead>
+  <th>Name</th>
+  <th>Model</th>
+  <th>Price</th>
+  <th>Rentals</th>
+  <th>Edit</th>
+  <th>Delete</th>
+</thead>
+<tbody>
+<% @robots.each do |robot| %>
+  <tr>
+    <td> <%= robot.name %> </td>
+    <td> <%= robot.model %> </td>
+    <td> <%= robot.price %> </td>
+    <td> <%= Rental.where(robot_id: robot.id).count %> </td>
+    <td> <%= link_to "Reconfigure robo", edit_robot_path(robot) %></td>
+    <td> <%= link_to "Terminate robo", robot_path(robot),method: :delete %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+

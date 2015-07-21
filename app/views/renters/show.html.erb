@@ -1,0 +1,19 @@
+<h1>Client Rentals</h1>
+<table>
+<thead>
+  <th>Robot id </th>
+  <th>Checkin</th>
+  <th>Checkout</th>
+</thead>
+<tbody>
+<!-- TODO -->
+<% @rentals.each do |rental| %>
+  <tr>
+    <td> <%= rental.robot_id %> </td>
+    <td> <%= rental.checkin %> </td>
+    <td> <%= rental.checkout %> </td>
+  </td>
+  </tr>
+<% end %>
+</tbody>
+</table>

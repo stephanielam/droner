@@ -16,5 +16,7 @@ end
 end
 
 10.times do
-  Client.create(username: Faker::Lorem.word, password: Faker::Lorem.word)
+  Client.create(username: Faker::Lorem.word, password: 'Faker::Lorem.word')
 end
+
+Client.create(username: 'lam', password: '123')

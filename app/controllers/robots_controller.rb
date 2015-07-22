@@ -1,4 +1,5 @@
 class RobotsController < ApplicationController
+  before_action :authenticate, only: [:rent]
 
   def index
     @robots = Robot.all
@@ -32,6 +33,13 @@ class RobotsController < ApplicationController
   
   def show
     @robot = Robot.find(params[:id]) 
+  end
+
+  def rent
+    @robot = Robot.find(params[:id])
+    @robot.rentals.create(client: current_client, checkout: DateTime.now)
+    flash[:notice] = "You have just rented #{@robot.name}...BOOYA!"
+    redirect_to client_path(current_client)
   end
 
   private

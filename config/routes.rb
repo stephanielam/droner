@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
-  root to: "robots#index"
-  resources :robots
-  resources :clients do
+  resources :sessions, only: [:new, :create, :destroy] 
+  delete :logout, to: 'sessions#destroy'
+  resources :clients
+
+  resources :robots do
     resources :rentals, except: [:destroy]
+    member do
+      post :rent
+    end
   end
 
+  namespace :admin do
+    resources :clients
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

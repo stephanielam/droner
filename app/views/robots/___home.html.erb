@@ -1,15 +1,4 @@
 <h1>RAM'N DRIVE ROBOS</h1>
-<h3>Admin Pages</h3>
-<nav>
-<div><%= link_to "New bang!", new_robot_path %></div>
-</nav>
-<br>
-<h3>Client pages</h3>
-<nav>
-<div><%= link_to "New client!", new_client_path %></div>
-<div><%= link_to "Client list!", clients_path %></div>
-</nav>
-<br>
 <h3>PTFO</h3>
 <nav>
 <div><%= link_to "Logout", logout_path, method: :delete %></div>
@@ -17,7 +6,6 @@
 
 <table>
 <thead>
-  <th>Image</th>
   <th>Robot</th>
   <th>Model</th>
   <th>Price</th>
@@ -29,16 +17,12 @@
 <tbody>
 <% @robots.each do |robot| %>
   <tr>
-    <td> <%= robot.image %> </td>
     <td> <%= robot.name %> </td>
     <td> <%= robot.model %> </td>
     <td> <%= robot.price %> </td>
     <td> <%= Rental.where(robot_id: robot.id).count %> </td>
     <td> <%= link_to "Rent", rent_robot_path(robot.id), method: :post %></td>
-    <td> <%= link_to "Reconfigure robo", edit_robot_path(robot) %></td>
-    <td> <%= link_to "Terminate robo", robot_path(robot), method: :delete %></td>
   </tr>
 <% end %>
 </tbody>
 </table>
-

@@ -1,19 +1,21 @@
-<h1>Rental List</h1>
-<%= link_to "Back to listings!", robots_path %>
-<%= link_to "View Rentals Mad", rental %>
+<h1>Rental List Index</h1>
+<nav>
+<div><%= link_to "Back to robot listings", robots_path %></div>
+<div><%= link_to "Back to client list", clients_path %></div>
+</nav>
+
 <table>
 <thead>
   <th>Robot ID</th>
   <th>Client ID</th>
-  <th>checkin</th>
   <th>Checkout</th>
+  <th>Checkin</th>
 </thead>
 <tbody>
 <% @rentals.each do |rental| %>
   <tr>
     <td> <%= rental.robot_id %> </td>
     <td> <%= rental.client_id %> </td>
-    <td> <%= rental.checkin %> </td>
     <td> <%= rental.checkout %> </td>
   </tr>
 <% end %>

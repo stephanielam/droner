@@ -5,6 +5,7 @@ class CreateRentals < ActiveRecord::Migration
       t.integer :robot_id
       t.datetime :checkout
       t.datetime :checkin
+      t.string :review
 
       t.timestamps
     end

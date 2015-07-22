@@ -1,7 +1,32 @@
-<h1>Client Rentals</h1>
+<h1><%= @client.username%> - Admin or current user only</h1>
+<nav>
+  <div><%= link_to "All robots", robots_path %></div>
+  <div><%= link_to "All clients", clients_path %></div>
+</nav>
+
+<h2>Rentals</h2>
 <table>
-<thead>
-  <th>Username </th>
-  <th>Password</th>
-</thead>
-<tbody>
+  <thead>
+    <th>Robot </th>
+    <th>Checkout</th>
+    <th>Checkin</th>
+    <th>Review</th>
+  </thead>
+
+  <tbody>
+    <% @client.rentals.each do |rental| %>
+    <tr>
+      <td><%= rental.robot.name %></td>
+      <td><%= rental.checkout %></td>
+      <% if rental.checkin %>
+      <td> <%= rental.checkin %> </td>
+      <% else %>
+      <td> <%= link_to "Return & write review", edit_robot_rental_path(rental.robot.id,rental.id) %></td>
+      <% end %>
+      <td><%= rental.review %></td>
+
+      <td> <%= link_to "Edit review", edit_robot_rental_path(rental.robot.id,rental.id) if rental.review %></td> 
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<!-- fonts -->
+<link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+
 <head>
   <title>RamNDrive</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -7,8 +10,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+  <% flash.each do |key, value| %>
+  <%= content_tag(:div, value) %>
+  <% end %>
+  <%= yield %>
 
 </body>
 </html>

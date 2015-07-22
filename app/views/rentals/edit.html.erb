@@ -1,0 +1,9 @@
+<h1>Write review</h1>
+
+<%= form_for @rental, url: robot_rental_path(@robot, @rental) do |f| %>
+  <div>
+  <%= f.label :review %> 
+  <%= f.text_field :review %>
+  </div>
+  <%= f.submit %>
+<% end %>

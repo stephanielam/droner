@@ -6,6 +6,7 @@
 
 <table>
 <thead>
+  <th>ID</th>
   <th>Username</th>
   <th>Password</th>
   <th>Rental Records</th>
@@ -15,6 +16,7 @@
 <tbody>
 <% @clients.each do |client| %>
   <tr>
+    <td> <%= client.id %> </td>
     <td> <%= client.username %> </td>
     <td> <%= "*********" %> </td>
     <td> <%= link_to "Rental Records", client_path(client) %></td>

@@ -28,6 +28,10 @@ class RobotsController < ApplicationController
   def update
     @robot = Robot.find(params[:id])
     @robot.update(robot_params)
+    # TODO: should update with uploaded image, not url if both supplied
+    if (params[:robot][:image] && params[:robot][:remote_image_url])
+      @robot.update(image: params[:robot][:image])
+    end
     redirect_to robots_path
   end
   
@@ -38,14 +42,14 @@ class RobotsController < ApplicationController
   def rent
     @robot = Robot.find(params[:id])
     @robot.rentals.create(client: current_client, checkout: DateTime.now)
-    flash[:notice] = "You have just rented #{@robot.name}...BOOYA!"
+    flash[:notice] = "You have just rented #{@robot.name}!"
     redirect_to client_path(current_client)
   end
 
   private
 
   def robot_params
-    params.require(:robot).permit(:name, :model, :price, :rentals)
+    params.require(:robot).permit(:name, :model, :price, :rentals, :image, :remote_image_url)
   end
 
 end

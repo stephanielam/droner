@@ -26,6 +26,19 @@ h1 {
   font-family: 'Satisfy';
 }
 
+.profilepic {
+  border: 10px solid black;
+
+  height: 250px;
+  display: inline-block;
+  float: left;
+}
+
+.info {
+  float:left;
+  padding-left: 50px;
+}
+
 nav div {
   background: rgba(0,0,0,0.2);
   color: black;

@@ -41,4 +41,5 @@ gem 'faker'
 
 gem 'pry'
 
+# gem "rmagick"
 gem "carrierwave"

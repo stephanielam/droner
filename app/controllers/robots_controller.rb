@@ -47,10 +47,14 @@ class RobotsController < ApplicationController
     redirect_to client_path(current_client)
   end
 
+  def search
+    @results = Robot.search(params[:search])
+  end
+
   private
 
   def robot_params
-    params.require(:robot).permit(:name, :model, :price, :rentals, :image, :remote_image_url)
+    params.require(:robot).permit(:name, :model, :price, :rentals, :image, :remote_image_url, :search)
   end
 
 end

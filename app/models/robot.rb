@@ -5,4 +5,11 @@ class Robot < ActiveRecord::Base
 
   validates :name, presence: true
   validates :model, presence: true
+
+  if search
+    find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+  else
+    find(:all)
+  end
 end
+

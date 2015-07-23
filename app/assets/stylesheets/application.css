@@ -19,6 +19,10 @@ html{
   background-size: 100%;
 }
 
+footer {
+  clear:both;
+}
+
 h1 {
   font-size: 40px;
   text-align: center;

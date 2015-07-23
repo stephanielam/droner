@@ -1,0 +1,16 @@
+<footer>
+ <small>
+   <% if current_client %>
+   Signed in as <%= Admin if current_client.admin %>: <%= current_client.username %> - 
+   <% if current_client.admin %>
+   <%= link_to "Edit Profile", edit_admin_client_path(current_client)%> 
+   <% else %>
+   <%= link_to "Edit Profile", edit_client_path(current_client)%>    
+   <% end %>
+   | <%= link_to "PTFO", session_path("current"), method: :delete %>
+   <% else %>
+   <%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_client_path %>
+   <% end %>
+ </small>
+</footer>
+

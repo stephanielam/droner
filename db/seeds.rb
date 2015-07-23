@@ -12,11 +12,12 @@
 end
 
 10.times do
-  Rental.create(robot_id: Faker::Number.between(1, 10), client_id: Faker::Number.between(1, 10))
+  Rental.create(robot_id: Faker::Number.between(1, 10), client_id: Faker::Number.between(1, 10), checkout: DateTime.now)
 end
 
 10.times do
   Client.create(username: Faker::Lorem.word, password: 'Faker::Lorem.word')
 end
 
-Client.create(username: 'lam', password: '123')
+Client.create(username: 'lam', password: '123', admin: true)
+Client.create(username: 'siv', password: '123', admin: true)

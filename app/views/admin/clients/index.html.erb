@@ -1,4 +1,4 @@
-<h1>Client List - Admin page</h1>
+<h1>Admin List</h1>
 
 <table>
 <thead>
@@ -7,23 +7,22 @@
   <th>Username</th>
   <th>Password</th>
   <th>Rental Records</th>
-  <th>Preview Mode</th>
   <th>Edit</th>
   <th>Delete</th>
 </thead>
 <tbody>
 <% @clients.each do |client| %>
+<% if client.admin %>
   <tr>
     <td> <%= client.id %> </td>
     <td> <%= client.admin %> </td>
     <td> <%= client.username %> </td>
-    <td> ********* </td>
+    <td> <%= "*********" %> </td>
     <td> <%= link_to "Rental Records", client_path(client) %></td>
-    <td> <%= link_to "Switch", preview_session_path(client), method: :post %></td>
     <td> <%= link_to "Edit Info", edit_admin_client_path(client) %></td>
-    <td> <%= link_to "Delete Client", client_path(client), method: :delete %></td>
+    <td> <%= link_to "Delete Client", client_path(client),method: :delete %></td>
   </tr>
+  <% end %>
 <% end %>
 </tbody>
 </table>
-

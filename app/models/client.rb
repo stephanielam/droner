@@ -8,7 +8,11 @@ class Client < ActiveRecord::Base
   validates :username, presence: true
   validates :password, presence: true
 
-  def return_robo
+  after_initialize :init
+
+  def init
+    self.admin  ||= false
+    self.save
   end
 
 end

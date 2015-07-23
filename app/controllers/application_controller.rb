@@ -11,6 +11,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authorized
+    if !current_client.admin
+      flash[:alert] = "You must be an admin to view this page."
+      redirect_to robots_path
+    end
+  end
+
   def current_client
     @current_client ||= Client.find(session[:client_id]) if session[:client_id]
   end

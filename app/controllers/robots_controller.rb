@@ -1,5 +1,6 @@
 class RobotsController < ApplicationController
   before_action :authenticate, only: [:rent]
+  before_filter :authorized, only: [:new, :create]
 
   def index
     @robots = Robot.all

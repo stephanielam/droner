@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  resources :sessions, only: [:new, :create, :destroy] 
+  root 'robots#index'
+    
+  # root :to => 'customer/dashboard#index', :constraints => lambda { |request| request.env['warden'].user.type == 'customer' }
+  # root :to => 'admin/dashboard#index', :constraints => lambda { |request| request.env['warden'].user.type == 'admin' }
+
+  resources :sessions, only: [:new, :create, :destroy] do
+    member do
+      post :preview
+    end
+  end
   delete :logout, to: 'sessions#destroy'
   resources :clients
 

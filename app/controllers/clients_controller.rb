@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
-
+  before_filter :authorized, only: [:index]
+  
   def index
     @clients = Client.all
   end
@@ -42,7 +43,7 @@ class ClientsController < ApplicationController
   protected
 
   def client_params
-    params.require(:client).permit(:username, :password, :password_confirmation)
+    params.require(:client).permit(:username, :password, :password_confirmation, :admin)
   end
 
 

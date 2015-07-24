@@ -1,16 +1,11 @@
 Rails.application.routes.draw do
   root 'robots#index'
     
-  # root :to => 'customer/dashboard#index', :constraints => lambda { |request| request.env['warden'].user.type == 'customer' }
-  # root :to => 'admin/dashboard#index', :constraints => lambda { |request| request.env['warden'].user.type == 'admin' }
-
   resources :sessions, only: [:new, :create, :destroy] do
     member do
       post :preview
     end
   end
-  delete :logout, to: 'sessions#destroy'
-  resources :clients
 
   resources :robots do
     resources :rentals, except: [:destroy]
@@ -22,6 +17,13 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :clients
   end
+
+  resources :clients
+
+  delete :logout, to: 'sessions#destroy'
+
+  get :results, to: 'robots#search'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

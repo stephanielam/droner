@@ -1,9 +1,11 @@
+require 'pry'
 class RobotsController < ApplicationController
   before_action :authenticate, only: [:rent]
   before_filter :authorized, only: [:new, :create]
 
   def index
     @robots = Robot.all
+    @rentals = Rental.all
   end
 
   def new
@@ -48,13 +50,24 @@ class RobotsController < ApplicationController
   end
 
   def search
-    @results = Robot.search(params[:search])
+    flash[:alert] = "You searched."
+    @robots = Robot.search(params[:searchKey])
+    case params[:price]
+    when "0"
+    when "1"
+      @robots = @robots.price_less_than(100)
+    when "2"
+      @robots = @robots.price_greater_than(100).price_less_than(500)
+    when "3"
+      @robots = @robots.price_greater_than(500)
+    end 
+    @robots
   end
 
   private
 
   def robot_params
-    params.require(:robot).permit(:name, :model, :price, :rentals, :image, :remote_image_url, :search)
+    params.require(:robot).permit(:name, :model, :price, :rentals, :image, :remote_image_url, :searchKey, :price)
   end
 
 end

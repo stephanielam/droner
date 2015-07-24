@@ -1,7 +1,4 @@
-<h1>RAM'N DRIVE ROBOS</h1>
-
-<%= render "searchform" %>
-
+<h1>Search Results</h1>
 <table>
 <thead>
   <th>Image</th>
@@ -17,6 +14,7 @@
   <% end %>
 </thead>
 <tbody>
+
 <% @robots.each do |robot| %>
   <tr>
     <td> <%= image_tag robot.image.to_s if robot.image? %></td>
@@ -32,28 +30,3 @@
     <% end %>
   </tr>
 <% end %>
-</tbody>
-</table>
-<% if current_client && current_client.admin %>
-  <h2>RENTALS</h2>
-  <table>
-  <thead>
-    <th>Client</th>
-    <th>Robot</th>
-    <th>Checkout</th>
-    <th>Checkin</th>
-    <th>Review</th>
-  </thead>
-  <tbody>
-  <% @rentals.each do |rental| %>
-    <tr>
-      <td> <%= rental.client_id %> - <%= Client.find(rental.client_id).username%></td>
-      <td> <%= rental.robot_id %> - <%= Robot.find(rental.robot_id).name %></td>
-      <td> <%= rental.checkout %> </td>
-      <td> <%= rental.checkin if rental.checkin%> </td>
-      <td> <%= rental.review if rental.review %> </td>
-    </tr>
-  <% end %>
-  </tbody>
-  </table>
- <% end %>

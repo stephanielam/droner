@@ -1,4 +1,13 @@
-<%= form_tag robots_path, :method => 'get' do %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "Search", :name => nil %>
-<% end %>
+<%= form_tag results_path, method: :get %>
+  <%= label_tag(:searchKey, "Search robots:") %>
+  <%= text_field_tag(:searchKey) %>
+  <%= select_tag(:price,
+    options_for_select([
+      ['', 0],
+      ['Less than 100', 1],
+      ['Between 100 and 500', 2],
+      ['Over 500', 3]
+    ])
+  ) %>
+
+  <%= submit_tag("Search") %>

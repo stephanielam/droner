@@ -1,18 +1,18 @@
-<nav>
-    <% if current_client %>
-    <% if current_client.admin %>
+<nav class="navbar navbar-inverse">
+<% if current_client %>
+  <% if current_client.admin %>
     <div><%= link_to "Admin Home", admin_clients_path %></div>
     <div><%= link_to "Robot list", robots_path %></div>
-    <div><%= link_to "New bang!", new_robot_path %></div>
+    <div><%= link_to "New robot!", new_robot_path %></div>
     <div><%= link_to "Client list", clients_path %></div>
     <div><%= link_to "New user!", new_admin_client_path %></div> 
-    <% else %>
+  <% else %>
     <div><%= link_to "Robot list", robots_path %></div>
     <div><%= link_to "My Profile", client_path(current_client) %></div>
     <div><%= link_to "New user!", new_client_path %></div>
     <% if session[:admin_id] %>
     <div> <%= link_to "Switch back to #{Client.find(session[:admin_id]).username}", preview_session_path(session[:admin_id]), method: :post %></div>    
     <% end %>       
-    <% end %>
-    <% end %>
+  <% end %>
+<% end %>
 </nav>

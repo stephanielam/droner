@@ -1,8 +1,4 @@
-<h1>Rental List Index</h1>
-<nav>
-<div><%= link_to "Back to robot listings", robots_path %></div>
-<div><%= link_to "Back to client list", clients_path %></div>
-</nav>
+<h1>All rentals</h1>
 
 <table>
 <thead>
@@ -10,6 +6,7 @@
   <th>Client ID</th>
   <th>Checkout</th>
   <th>Checkin</th>
+  <th>Review</th>
 </thead>
 <tbody>
 <% @rentals.each do |rental| %>

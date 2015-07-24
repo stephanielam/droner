@@ -21,7 +21,7 @@
       <% end %>
       <td><%= rental.review %></td>
 
-      <td> <%= link_to "Edit review", edit_robot_rental_path(rental.robot.id,rental.id) if rental.review %></td> 
+      <td> <%= link_to "Edit review", edit_robot_rental_path(rental.robot.id,rental.id) if rental.checkin %></td> 
     </tr>
     <% end %>
   </tbody>

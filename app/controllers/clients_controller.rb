@@ -22,7 +22,7 @@ class ClientsController < ApplicationController
   def destroy
     @client = Client.find(params[:id])
     @client.destroy
-    flash[:success] = "Your robo was terminated."
+    flash[:success] = "Client was terminated."
     redirect_to clients_path
   end
 
@@ -33,7 +33,7 @@ class ClientsController < ApplicationController
   def update
     @client = Client.find(params[:id])
     @client.update(client_params)
-    redirect_to clients_path
+    redirect_to robots_path
   end
   
   def show

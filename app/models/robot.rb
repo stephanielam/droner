@@ -5,11 +5,9 @@ class Robot < ActiveRecord::Base
 
   validates :name, presence: true
   validates :model, presence: true
+  validates :price, presence: true, numericality: {only_interger: true}
 
-  if search
-    find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
-  else
-    find(:all)
-  end
+  scope :price_greater_than,  ->(price) {where("price > ?", price)}
+  scope :price_less_than,  ->(price) {where("price < ?", price)}
+  scope :search, -> (text) {where("lower(name || model) LIKE ? ", "%"+text.downcase+"%")}
 end
-

@@ -8,11 +8,11 @@
 
 
 10.times do
-  Robot.create(name:Faker::Name.name, model:Faker::Lorem.characters(5), price:Faker::Commerce.price)
+  Robot.create(name:Faker::Name.name, model:Faker::Lorem.characters(5), price:Faker::Number.between(50, 800))
 end
 
 10.times do
-  Rental.create(robot_id: Faker::Number.between(1, 10), client_id: Faker::Number.between(1, 10), checkout: DateTime.now)
+  Rental.create(robot_id: Faker::Number.between(1, 10), client_id: Faker::Number.between(1, 10), checkout: DateTime.now, checkin: DateTime.now+10, review: "ya")
 end
 
 10.times do

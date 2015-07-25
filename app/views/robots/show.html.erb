@@ -1,20 +1,22 @@
 <h1>Robo <%= @robot.id %></h1>
 <br>
-<img class="profilepic" src="<%= @robot.image %>"/>
-<div class="info">
-  <h2>Name: <%= @robot.name %></h2>
-  <h2>Model: <%= @robot.model %></h2>
-  <h2>Price: $<%= @robot.price %></h2>
-  <h2>Rentals: <%= @robot.rentals.count %></h2>
-</div>
-<div class="info">
-  <h2>Reviews: 
-    <ul>
-      <% @robot.rentals.each do |rental| %>
-      <% if rental.review %>
-      <div class="review"><%= Client.find(rental.client_id).username.upcase %>: <%= rental.review %></div>
-      <% end %>
-      <% end %>
-    </ul>
-  </h2>
+<div class="container">
+  <img class="profilepic" src="<%= @robot.image %>"/>
+  <div class="info">
+    <h2>Name: <%= @robot.name %></h2>
+    <h2>Model: <%= @robot.model %></h2>
+    <h2>Price: $<%= @robot.price %></h2>
+    <h2>Rentals: <%= @robot.rentals.count %></h2>
+  </div>
+  <div class="info">
+    <h2>Reviews: 
+      <ul>
+        <% @robot.rentals.each do |rental| %>
+        <% if rental.review %>
+        <div class="review"><%= Client.find(rental.client_id).username.upcase %>: <%= rental.review %></div>
+        <% end %>
+        <% end %>
+      </ul>
+    </h2>
+  </div>
 </div>

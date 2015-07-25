@@ -1,59 +1,71 @@
-<h1>RAM'N DRIVE ROBOS</h1>
-
-<%= render "searchform" %>
-
-<table>
-<thead>
-  <th>Image</th>
-  <th>ID</th>
-  <th>Robot</th>
-  <th>Model</th>
-  <th>Price</th>
-  <th>Rentals</th>
-  <th>Rent</th>
-  <% if current_client && current_client.admin %>
-  <th>Edit</th>
-  <th>Delete</th>
+<div class="header">
+  <h1>RAM'N DRIVE ROBOS</h1>
+  <h3>Welcome. Find the best rental rates and robots here.</h3>
+  <% if !current_client %>
+    <div class="btn"><%= link_to "Log In", new_session_path %></li></div>
+    <div class="btn"><%= link_to "Sign Up", new_client_path %></li></div>
   <% end %>
-</thead>
-<tbody>
-<% @robots.each do |robot| %>
-  <tr>
-    <td> <%= image_tag robot.image.to_s if robot.image? %></td>
-    <td> <%= robot.id %> </td>
-    <td> <%= link_to robot.name, robot_path(robot) %> </td>
-    <td> <%= robot.model %> </td>
-    <td> <%= robot.price %> </td>
-    <td> <%= Rental.where(robot_id: robot.id).count %> </td>
-    <td> <%= link_to "Rent", rent_robot_path(robot.id), method: :post %></td>
+
+</div>
+  <div class="container">
+  <h2> Robot List </h2>
+    <%= render "searchform" %>
+    <table class="table table-hover">
+      <thead>
+        <th>Image</th>
+        <th>ID</th>
+        <th>Robot</th>
+        <th>Model</th>
+        <th>Price</th>
+        <th>Rentals</th>
+        <th>Rent</th>
+        <% if current_client && current_client.admin %>
+        <th>Edit</th>
+        <th>Delete</th>
+        <% end %>
+      </thead>
+      <tbody>
+        <% @robots.each do |robot| %>
+        <tr>
+          <td> <%= image_tag robot.image.to_s if robot.image? %></td>
+          <td> <%= robot.id %> </td>
+          <td> <%= link_to robot.name, robot_path(robot) %> </td>
+          <td> <%= robot.model %> </td>
+          <td> <%= robot.price %> </td>
+          <td> <%= Rental.where(robot_id: robot.id).count %> </td>
+          <td> <%= link_to "Rent", rent_robot_path(robot.id), method: :post %></td>
+          <% if current_client && current_client.admin %>
+          <td> <%= link_to "Reconfigure robo", edit_robot_path(robot) %></td>
+          <td> <%= link_to "Terminate robo", robot_path(robot), method: :delete %></td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container">
     <% if current_client && current_client.admin %>
-    <td> <%= link_to "Reconfigure robo", edit_robot_path(robot) %></td>
-    <td> <%= link_to "Terminate robo", robot_path(robot), method: :delete %></td>
+    <h2>RENTALS</h2>
+    <table class="table table-hover">
+      <thead>
+        <th>Client</th>
+        <th>Robot</th>
+        <th>Checkout</th>
+        <th>Checkin</th>
+        <th>Review</th>
+      </thead>
+      <tbody>
+        <% @rentals.each do |rental| %>
+        <tr>
+          <td> <%= rental.client_id %> - <%= Client.find(rental.client_id).username%></td>
+          <td> <%= rental.robot_id %> - <%= Robot.find(rental.robot_id).name %></td>
+          <td> <%= rental.checkout %> </td>
+          <td> <%= rental.checkin if rental.checkin%> </td>
+          <td> <%= rental.review if rental.review %> </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
     <% end %>
-  </tr>
-<% end %>
-</tbody>
-</table>
-<% if current_client && current_client.admin %>
-  <h2>RENTALS</h2>
-  <table>
-  <thead>
-    <th>Client</th>
-    <th>Robot</th>
-    <th>Checkout</th>
-    <th>Checkin</th>
-    <th>Review</th>
-  </thead>
-  <tbody>
-  <% @rentals.each do |rental| %>
-    <tr>
-      <td> <%= rental.client_id %> - <%= Client.find(rental.client_id).username%></td>
-      <td> <%= rental.robot_id %> - <%= Robot.find(rental.robot_id).name %></td>
-      <td> <%= rental.checkout %> </td>
-      <td> <%= rental.checkin if rental.checkin%> </td>
-      <td> <%= rental.review if rental.review %> </td>
-    </tr>
-  <% end %>
-  </tbody>
-  </table>
- <% end %>
+  </div>

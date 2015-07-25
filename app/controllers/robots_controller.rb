@@ -42,11 +42,25 @@ class RobotsController < ApplicationController
     @robot = Robot.find(params[:id]) 
   end
 
+  def available?
+    # check all rentals of robot have checkin dates
+    @robot = Robot.find(params[:id])
+    @robot.rentals.each do |rental|
+      return false if (rental.checkin == nil)
+    end
+    true
+  end
+
   def rent
     @robot = Robot.find(params[:id])
-    @robot.rentals.create(client: current_client, checkout: DateTime.now)
-    flash[:notice] = "You have just rented #{@robot.name}!"
-    redirect_to client_path(current_client)
+    if available?
+      @robot.rentals.create(client: current_client, checkout: DateTime.now)
+      flash[:notice] = "You have just rented #{@robot.name}!"
+      redirect_to client_path(current_client)
+    else 
+      flash[:notice] = "#{@robot.name} is not available!"
+      redirect_to robots_path
+    end
   end
 
   def search

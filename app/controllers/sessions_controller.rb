@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:client_id] = nil
-    redirect_to new_session_path, notice: "Adios!"
+    redirect_to new_session_path
   end
 
   def preview

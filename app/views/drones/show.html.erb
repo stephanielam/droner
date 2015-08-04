@@ -1,22 +1,26 @@
-<h1>Robo <%= @drone.id %></h1>
-<br>
-<div class="container">
-  <img class="profilepic" src="<%= @drone.image %>"/>
-  <div class="info">
-    <h2>Name: <%= @drone.name %></h2>
-    <h2>Model: <%= @drone.model %></h2>
-    <h2>Price: $<%= @drone.price %></h2>
-    <h2>Rentals: <%= @drone.rentals.count %></h2>
-  </div>
-  <div class="info">
-    <h2>Reviews: 
-      <ul>
-        <% @drone.rentals.each do |rental| %>
-        <% if rental.review %>
-        <div class="review"><%= Client.find(rental.client_id).username.upcase %>: <%= rental.review %></div>
-        <% end %>
-        <% end %>
-      </ul>
-    </h2>
+<div class="rowOne">
+  <div class="container">
+    <h1>Robo <%= @drone.id %></h1>
+    <br>
+    <div class="container">
+        <img class="profilepic" src="<%= @drone.image %>"/>
+      <div class="info">
+        <h2>Name: <%= @drone.name %></h2>
+        <h2>Model: <%= @drone.model %></h2>
+        <h2>Price: $<%= @drone.price %></h2>
+        <h2>Rentals: <%= @drone.rentals.count %></h2>
+      </div>
+      <div class="info">
+        <h2>Reviews: 
+          <ul>
+            <% @drone.rentals.each do |rental| %>
+            <% if rental.review %>
+            <div class="review"><%= Client.find(rental.client_id).username.upcase %>: <%= rental.review %></div>
+            <% end %>
+            <% end %>
+          </ul>
+        </h2>
+      </div>
+    </div>
   </div>
 </div>

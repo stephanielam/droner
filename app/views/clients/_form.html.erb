@@ -1,15 +1,11 @@
-<div class="rowOne">
-  <div class="container">
-    <%= form_for @client do |f| %>
-    <div>
-      <%= f.label :username %> 
-      <%= f.text_field :username %>
-    </div>
-    <div>
-      <%= f.label :password %> 
-      <%= f.text_field :password %>
-    </div>
-    <%= f.submit %>
-    <% end %>
-  </div>
+<%= form_for @client do |f| %>
+<div>
+  <%= f.label :username %> 
+  <%= f.text_field :username %>
 </div>
+<div>
+  <%= f.label :password %> 
+  <%= f.text_field :password %>
+</div>
+<%= f.submit %>
+<% end %>

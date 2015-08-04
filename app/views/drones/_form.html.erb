@@ -1,27 +1,23 @@
-<div class="rowOne">
-  <div class="container">
-    <%= form_for @drone, :html=>{:multipart=> true} do |f| %>
-    <div>
-      <%= f.label :name %> 
-      <%= f.text_field :name %>
-    </div>
-    <div>
-      <%= f.label :model %> 
-      <%= f.text_field :model %>
-    </div>
-    <div>
-      <%= f.label :price %> 
-      <%= f.text_field :price %>
-    </div>
-    <div>
-      <%= f.file_field :image %> 
-    </div>
-    <div>
-      <%= f.label :remote_image_url %> 
-      <%= f.text_field :remote_image_url %>
-    </div>
-    <%= f.submit %>
-
-    <% end %>
-  </div>
+<%= form_for @drone, :html=>{:multipart=> true} do |f| %>
+<div>
+  <%= f.label :name %> 
+  <%= f.text_field :name %>
 </div>
+<div>
+  <%= f.label :model %> 
+  <%= f.text_field :model %>
+</div>
+<div>
+  <%= f.label :price %> 
+  <%= f.text_field :price %>
+</div>
+<div>
+  <%= f.file_field :image %> 
+</div>
+<div>
+  <%= f.label :remote_image_url %> 
+  <%= f.text_field :remote_image_url %>
+</div>
+<%= f.submit %>
+
+<% end %>

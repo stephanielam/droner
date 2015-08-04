@@ -1,15 +1,15 @@
 <%= form_for [:admin, @client] do |f| %>
-  <div>
+<div>
   <%= f.label :username %> 
   <%= f.text_field :username %>
-  </div>
-  <div>
+</div>
+<div>
   <%= f.label :password %> 
   <%= f.text_field :password %>
-  </div>
-  <div>
+</div>
+<div>
   <%= f.label :admin %>
   <%= f.check_box :admin %>
-  </div>
-  <%= f.submit %>
+</div>
+<%= f.submit %>
 <% end %>

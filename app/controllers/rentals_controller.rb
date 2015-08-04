@@ -6,8 +6,8 @@ class RentalsController < ApplicationController
   end
 
   def new
-    @robot = Robot.find(params[:robot_id])
-    @rental = @robot.rentals.build
+    @drone = Drone.find(params[:drone_id])
+    @rental = @drone.rentals.build
   end
 
   def create
@@ -20,7 +20,7 @@ class RentalsController < ApplicationController
   end
 
   def edit
-    @robot = Robot.find(params[:robot_id])
+    @drone = Drone.find(params[:drone_id])
     @rental = Rental.find(params[:id])
   end
 
@@ -39,7 +39,7 @@ class RentalsController < ApplicationController
   private
 
   def rental_params
-    params.require(:rental).permit(:client_id, :robot_id, :checkin, :checkout, :review)
+    params.require(:rental).permit(:client_id, :drone_id, :checkin, :checkout, :review)
   end
 
 

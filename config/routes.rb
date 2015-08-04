@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'robots#index'
+  root 'drones#index'
     
   resources :sessions, only: [:new, :create, :destroy] do
     member do
@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :robots do
+  resources :drones do
     resources :rentals, except: [:destroy]
     member do
       post :rent
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   delete :logout, to: 'sessions#destroy'
 
-  get :results, to: 'robots#search'
+  get :results, to: 'drones#search'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

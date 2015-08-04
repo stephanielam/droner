@@ -33,7 +33,7 @@ class ClientsController < ApplicationController
   def update
     @client = Client.find(params[:id])
     @client.update(client_params)
-    redirect_to robots_path
+    redirect_to drones_path
   end
   
   def show

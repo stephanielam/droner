@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
     if client && client.authenticate(params[:password])
       session[:client_id] = client.id
-      redirect_to robots_path, notice: "Welcome back, #{client.username}!"
+      redirect_to drones_path, notice: "Welcome back, #{client.username}!"
     else
       flash.now[:alert] = "Log in failed..."
       render :new

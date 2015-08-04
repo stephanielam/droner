@@ -21,17 +21,7 @@ ActiveRecord::Schema.define(version: 20150722221114) do
     t.boolean  "admin"
   end
 
-  create_table "rentals", force: true do |t|
-    t.integer  "client_id"
-    t.integer  "robot_id"
-    t.datetime "checkout"
-    t.datetime "checkin"
-    t.string   "review"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "robots", force: true do |t|
+  create_table "drones", force: true do |t|
     t.string   "name"
     t.string   "model"
     t.integer  "price"
@@ -39,6 +29,16 @@ ActiveRecord::Schema.define(version: 20150722221114) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
+  end
+
+  create_table "rentals", force: true do |t|
+    t.integer  "client_id"
+    t.integer  "drone_id"
+    t.datetime "checkout"
+    t.datetime "checkin"
+    t.string   "review"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def authorized
     if !current_client.admin
       flash[:alert] = "You must be an admin to view this page."
-      redirect_to robots_path
+      redirect_to drones_path
     end
   end
 

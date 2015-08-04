@@ -1,6 +1,6 @@
-class CreateRobots < ActiveRecord::Migration
+class CreateDrones < ActiveRecord::Migration
   def change
-    create_table :robots do |t|
+    create_table :drones do |t|
       t.string :name
       t.string :model
       t.integer :price

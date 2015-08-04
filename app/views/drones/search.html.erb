@@ -1,0 +1,37 @@
+<h1>Search Results</h1>
+<div class="container">
+<%= render "searchform" %>
+  <table class="table table-hover">
+    <thead>
+      <th>Image</th>
+      <th>ID</th>
+      <th>Drone</th>
+      <th>Model</th>
+      <th>Price</th>
+      <th>Rentals</th>
+      <th>Rent</th>
+      <% if current_client && current_client.admin %>
+      <th>Edit</th>
+      <th>Delete</th>
+      <% end %>
+    </thead>
+    <tbody>
+
+      <% @drones.each do |drone| %>
+      <tr>
+        <td> <%= image_tag drone.image.to_s if drone.image? %></td>
+        <td> <%= drone.id %> </td>
+        <td> <%= link_to drone.name, drone_path(drone) %> </td>
+        <td> <%= drone.model %> </td>
+        <td> <%= drone.price %> </td>
+        <td> <%= Rental.where(drone_id: drone.id).count %> </td>
+        <td> <%= link_to "Rent", rent_drone_path(drone.id), method: :post %></td>
+        <% if current_client && current_client.admin %>
+        <td> <%= link_to "Reconfigure robo", edit_drone_path(drone) %></td>
+        <td> <%= link_to "Terminate robo", drone_path(drone), method: :delete %></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

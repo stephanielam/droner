@@ -3,7 +3,7 @@
   <h2>Rentals by <%= @client.username%></h2>
   <table class="table table-hover">
     <thead>
-      <th>Robot </th>
+      <th>Drone </th>
       <th>Checkout</th>
       <th>Checkin</th>
       <th>Review</th>
@@ -12,15 +12,15 @@
     <tbody>
       <% @client.rentals.each do |rental| %>
       <tr>
-        <td><%= rental.robot.name %></td>
+        <td><%= rental.drone.name %></td>
         <td><%= rental.checkout %></td>
         <% if rental.checkin %>
         <td> <%= rental.checkin %> </td>
         <% else %>
-        <td> <%= link_to "Return & write review", edit_robot_rental_path(rental.robot.id,rental.id) %></td>
+        <td> <%= link_to "Return & write review", edit_drone_rental_path(rental.drone.id,rental.id) %></td>
         <% end %>
         <td><%= rental.review %></td>
-        <td> <%= link_to "Edit review", edit_robot_rental_path(rental.robot.id,rental.id) if rental.checkin %></td> 
+        <td> <%= link_to "Edit review", edit_drone_rental_path(rental.drone.id,rental.id) if rental.checkin %></td> 
       </tr>
       <% end %>
     </tbody>

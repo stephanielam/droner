@@ -6,7 +6,7 @@
       <thead>
         <th>Image</th>
         <th>ID</th>
-        <th>Robot</th>
+        <th>Drone</th>
         <th>Model</th>
         <th>Price</th>
         <th>Rentals</th>
@@ -17,18 +17,18 @@
         <% end %>
       </thead>
       <tbody>
-        <% @robots.each do |robot| %>
+        <% @drones.each do |drone| %>
         <tr>
-          <td> <%= image_tag robot.image.to_s if robot.image? %></td>
-          <td> <%= robot.id %> </td>
-          <td> <%= link_to robot.name, robot_path(robot) %> </td>
-          <td> <%= robot.model %> </td>
-          <td> <%= robot.price %> </td>
-          <td> <%= Rental.where(robot_id: robot.id).count %> </td>
-          <td> <%= link_to "Rent", rent_robot_path(robot.id), method: :post %></td>
+          <td> <%= image_tag drone.image.to_s if drone.image? %></td>
+          <td> <%= drone.id %> </td>
+          <td> <%= link_to drone.name, drone_path(drone) %> </td>
+          <td> <%= drone.model %> </td>
+          <td> <%= drone.price %> </td>
+          <td> <%= Rental.where(drone_id: drone.id).count %> </td>
+          <td> <%= link_to "Rent", rent_drone_path(drone.id), method: :post %></td>
           <% if current_client && current_client.admin %>
-          <td> <%= link_to "Reconfigure robo", edit_robot_path(robot) %></td>
-          <td> <%= link_to "Terminate robo", robot_path(robot), method: :delete %></td>
+          <td> <%= link_to "Reconfigure robo", edit_drone_path(drone) %></td>
+          <td> <%= link_to "Terminate robo", drone_path(drone), method: :delete %></td>
           <% end %>
         </tr>
         <% end %>
@@ -44,7 +44,7 @@
     <table class="table table-hover">
       <thead>
         <th>Client</th>
-        <th>Robot</th>
+        <th>Drone</th>
         <th>Checkout</th>
         <th>Checkin</th>
         <th>Review</th>
@@ -53,7 +53,7 @@
         <% @rentals.each do |rental| %>
         <tr>
           <td> <%= rental.client_id %> - <%= Client.find(rental.client_id).username%></td>
-          <td> <%= rental.robot_id %> - <%= Robot.find(rental.robot_id).name %></td>
+          <td> <%= rental.drone_id %> - <%= Drone.find(rental.drone_id).name %></td>
           <td> <%= rental.checkout %> </td>
           <td> <%= rental.checkin if rental.checkin%> </td>
           <td> <%= rental.review if rental.review %> </td>

@@ -1,14 +1,6 @@
-<div class="header">
-  <h1>RAM'N DRIVE ROBOS</h1>
-  <h3>Welcome. Find the best rental rates and robots here.</h3>
-  <% if !current_client %>
-    <div class="btn"><%= link_to "Log In", new_session_path %></li></div>
-    <div class="btn"><%= link_to "Sign Up", new_client_path %></li></div>
-  <% end %>
-
-</div>
+<div class="rowOne">
   <div class="container">
-  <h2> Robot List </h2>
+    <h1> ROBOT LIST</h1>
     <%= render "searchform" %>
     <table class="table table-hover">
       <thead>
@@ -43,10 +35,12 @@
       </tbody>
     </table>
   </div>
+</div>
 
+<div class="rowTwo">
   <div class="container">
     <% if current_client && current_client.admin %>
-    <h2>RENTALS</h2>
+    <h1>RENTALS</h1>
     <table class="table table-hover">
       <thead>
         <th>Client</th>
@@ -69,3 +63,4 @@
     </table>
     <% end %>
   </div>
+</div>

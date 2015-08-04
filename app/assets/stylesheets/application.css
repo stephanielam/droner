@@ -14,6 +14,8 @@
  *= require_self
  */
 
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+
 html{
   background: #ffffff url("/images/background.jpg") fixed;
   background-size: 100%;
@@ -21,10 +23,9 @@ html{
 
 .header {
   width: 100%;
-  background: rgba(255,255,255,0.6);
-  padding: 30px;
   text-align: center;
- margin-bottom: 20px;
+  padding: 70px;
+  height: 340px;
 }
 
 .footer {
@@ -35,6 +36,36 @@ html{
   text-align: center;
 }
 
+nav li a{
+  width: 200px;
+}
+
+a:link {
+  color: #AB9FDE;
+  background: rgba(255,255,255,0.4);
+}
+
+a:hover{
+  font-weight: bold;
+}
+
+/*a:visited{
+  color: #0099CC;
+}*/
+
+.rowOne {
+  background: white;
+  width: 100%;
+  padding: 40px;
+}
+
+.rowTwo {
+  background: #E8E8E8;
+  width: 100%;
+  padding: 40px;
+  box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.27);
+}
+
 .btn {
   background: rgba(0,0,0,0.2);
   padding: 10px;
@@ -43,27 +74,22 @@ html{
 
 body {
   background: none;
-  padding-top: 55px;
 }
 
 h1 {
   font-size: 40px;
   text-align: center;
   color: #003D3D;
-  font-family: 'Satisfy';
+  font-family: 'Lobster';
+  margin: 0px 0px 30px 0px;
 }
 
-a:link {
-  color: #0099CC;
+h3 {
+  color: white;
+  text-shadow: 1px 1px 5px black;
 }
 
-a:hover{
-  font-weight: bold;
-}
 
-a:visited{
-  color: #0099CC;
-}
 
 .profilepic {
   border: 10px solid black;
@@ -102,7 +128,6 @@ th {
   text-transform: uppercase;
   text-align: center;
   padding: 6px 6px 6px 12px;
-
 }
 
 td {
@@ -111,5 +136,4 @@ td {
   background: rgba(255,255,255,0.4);
   padding: 6px 6px 6px 12px;
   color: #6D929B;
-
 }

@@ -1,21 +1,23 @@
-<h1>All rentals</h1>
-<div class="container">
-  <table class="table table-hover">
-    <thead>
-      <th>Robot ID</th>
-      <th>Client ID</th>
-      <th>Checkout</th>
-      <th>Checkin</th>
-      <th>Review</th>
-    </thead>
-    <tbody>
-      <% @rentals.each do |rental| %>
-      <tr>
-        <td> <%= rental.robot_id %> </td>
-        <td> <%= rental.client_id %> </td>
-        <td> <%= rental.checkout %> </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="rowOne">
+  <h1>All rentals</h1>
+  <div class="container">
+    <table class="table table-hover">
+      <thead>
+        <th>Robot ID</th>
+        <th>Client ID</th>
+        <th>Checkout</th>
+        <th>Checkin</th>
+        <th>Review</th>
+      </thead>
+      <tbody>
+        <% @rentals.each do |rental| %>
+        <tr>
+          <td> <%= rental.robot_id %> </td>
+          <td> <%= rental.client_id %> </td>
+          <td> <%= rental.checkout %> </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

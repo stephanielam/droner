@@ -1,6 +1,7 @@
+<search>
 <%= form_tag results_path, method: :get %>
-  <%= label_tag(:searchKey, "Search drones:") %>
-  <%= text_field_tag(:searchKey) %>
+  <%= label_tag(:searchKey, "") %>
+  <%= text_field_tag(:searchKey, nil, placeholder:"Search Drones") %>
   <%= select_tag(:price,
     options_for_select([
       ['', 0],
@@ -9,5 +10,5 @@
       ['Over 500', 3]
     ])
   ) %>
-
-  <%= submit_tag("Search") %>
+  <%= submit_tag("☛") %>
+  </search>

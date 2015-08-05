@@ -8,16 +8,17 @@
 
 
 10.times do
-  Drone.create(name:Faker::Name.name, model:Faker::Lorem.characters(5), price:Faker::Number.between(50, 800))
+  Drone.create(name:Faker::App.name, model:Faker::Lorem.characters(5), price:Faker::Number.between(50, 800))
 end
 
 10.times do
-  Rental.create(drone_id: Faker::Number.between(1, 10), client_id: Faker::Number.between(1, 10), checkout: DateTime.now, checkin: DateTime.now+10, review: "ya")
+  Rental.create(drone_id: Faker::Number.between(1, 10), client_id: Faker::Number.between(1, 10), checkout: DateTime.now, checkin: DateTime.now+10, review: Faker::Lorem.sentence(3, true, 6))
 end
 
 10.times do
-  Client.create(username: Faker::Lorem.word, password: 'Faker::Lorem.word')
+  Client.create(username: Faker::Internet.domain_word, password: 'Faker::Lorem.word')
 end
 
 Client.create(username: 'lam', password: '123', admin: true)
-Client.create(username: 'siv', password: '123', admin: true)
+Client.create(username: 'admin', password: '123', admin: true)
+Client.create(username: 'client', password: '123', admin: false)

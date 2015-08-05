@@ -20,7 +20,7 @@ class DronesController < ApplicationController
   def destroy
     @drone = Drone.find(params[:id])
     @drone.destroy
-    flash[:success] = "Your robo was terminated."
+    flash[:success] = "Your drone was terminated."
     redirect_to drones_path
   end
 
@@ -64,7 +64,6 @@ class DronesController < ApplicationController
   end
 
   def search
-    flash[:alert] = "You searched."
     @drones = Drone.search(params[:searchKey])
     case params[:price]
     when "0"

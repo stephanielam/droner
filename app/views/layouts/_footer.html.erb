@@ -7,7 +7,7 @@
    <% else %>
    <%= link_to "Edit Profile", edit_client_path(current_client)%>    
    <% end %>
-   | <%= link_to "PTFO", session_path("current"), method: :delete %>
+   | <%= link_to "Log out", session_path("current"), method: :delete %>
    <% else %>
    <%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_client_path %>
    <% end %>

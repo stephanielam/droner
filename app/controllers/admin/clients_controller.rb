@@ -2,6 +2,7 @@ class Admin::ClientsController < ApplicationController
   before_filter :authorized
   def index
     @clients = Client.all
+    @rentals = Rental.all
   end
 
   def new
@@ -21,7 +22,7 @@ class Admin::ClientsController < ApplicationController
   def destroy
     @client = Client.find(params[:id])
     @client.destroy
-    flash[:success] = "Your robo was terminated."
+    flash[:success] = "Your drone was terminated."
     redirect_to clients_path
   end
 
@@ -44,6 +45,5 @@ class Admin::ClientsController < ApplicationController
   def client_params
     params.require(:client).permit(:username, :password, :password_confirmation, :admin)
   end
-
 
 end

@@ -1,50 +1,37 @@
 <div class="container">
-<div class="header">
-  <h1 id="brand">Renadrone</h1>
-  <h3>Welcome. Find the best rental rates and drones here.</h3>
+  <div class="header">
+    <h1 id="brand">Renadrone</h1>
+    <h3>Welcome. Find the best rental rates and drones here.</h3>
 
-  <ul class="nav">
-    <% if current_client && current_client.admin %>
-    <li><%= link_to "Admin Home", admin_clients_path %></li>
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Drone List<b class="caret"></b></a>
-      <ul class="dropdown-menu">
-        <li><%= link_to "All Drones", drones_path %></li>
-        <li role="separator" class="divider"></li>
-        <li><%= link_to "New drone!", new_drone_path %></li>
-      </ul>
-    </li>
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Client List<b class="caret"></b></a>
-      <ul class="dropdown-menu">
-        <li><%= link_to "All Clients", clients_path %></li>
-        <li role="separator" class="divider"></li>
-        <li><%= link_to "New Client", new_admin_client_path %></li>
-      </ul>
-    </li>
-    <li><%= link_to "Logout", session_path("current"), method: :delete %></li>
-    <% elsif current_client %>
-    <li><%= link_to "All Drones", drones_path %></li>
-    <% end %>
-    <div class=login>
-    <% if !current_client %>
-    <div class="btn"><%= link_to "Log In", new_session_path %></li></div>
-    <div class="btn"><%= link_to "Sign Up", new_client_path %></li></div>
-      <div class="container">
-    <%= form_tag sessions_path do %>
-    <div>
-      <%= label_tag :username %><br/>
-      <%= text_field_tag :username %>
+    <ul class="nav">
+      <% if current_client && current_client.admin %>
+      <li><%= link_to "Admin Home", admin_clients_path %></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Drone List<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "All Drones", drones_path %></li>
+          <li role="separator" class="divider"></li>
+          <li><%= link_to "New drone!", new_drone_path %></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Client List<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "All Clients", clients_path %></li>
+          <li role="separator" class="divider"></li>
+          <li><%= link_to "New Client", new_admin_client_path %></li>
+        </ul>
+      </li>
+      <li><%= link_to "Logout", session_path("current"), method: :delete %></li>
+      <% elsif current_client %>
+      <li><%= link_to "All Drones", drones_path %></li>
+      <% end %>
+      <div class=login>
+        <% if !current_client %>
+        <div class="btn"><%= link_to "Log In", new_session_path %></li></div>
+        <div class="btn"><%= link_to "Sign Up", new_client_path %></li></div>      
+        <% end %>
+      </div>
     </div>
-    <div>
-      <%= label_tag :password %><br/>
-      <%= password_field_tag :password %>
-    </div>
-    <div><%= submit_tag "Log In" %></div>
-    <% end %>
-  </div>
-    <% end %>
-    </div>
-  </div>
-</ul>
+  </ul>
 </div>

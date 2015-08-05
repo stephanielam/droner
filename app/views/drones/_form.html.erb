@@ -1,22 +1,23 @@
 <%= form_for @drone, :html=>{:multipart=> true} do |f| %>
 <div>
-  <%= f.label :name %> 
+  <%= f.label :name %> <br>
   <%= f.text_field :name %>
 </div>
 <div>
-  <%= f.label :model %> 
+  <%= f.label :model %> <br>
   <%= f.text_field :model %>
 </div>
 <div>
-  <%= f.label :price %> 
+  <%= f.label :price %> <br>
   <%= f.text_field :price %>
 </div>
-<div>
-  <%= f.file_field :image %> 
-</div>
-<div>
-  <%= f.label :remote_image_url %> 
+<!-- <div>
+  <%= f.label :remote_image_url %> <br>
   <%= f.text_field :remote_image_url %>
+</div> -->
+<div>
+  <%= f.label :image %> <br>
+  <%= f.file_field :image %> <br>
 </div>
 <%= f.submit %>
 

@@ -27,8 +27,8 @@
         <td> <%= Rental.where(drone_id: drone.id).count %> </td>
         <td> <%= link_to "Rent", rent_drone_path(drone.id), method: :post %></td>
         <% if current_client && current_client.admin %>
-        <td> <%= link_to "Reconfigure robo", edit_drone_path(drone) %></td>
-        <td> <%= link_to "Terminate robo", drone_path(drone), method: :delete %></td>
+        <td> <%= link_to "Reconfigure drone", edit_drone_path(drone) %></td>
+        <td> <%= link_to "Terminate drone", drone_path(drone), method: :delete %></td>
         <% end %>
       </tr>
       <% end %>

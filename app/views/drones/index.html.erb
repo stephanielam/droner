@@ -4,7 +4,6 @@
     <%= render "searchform" %>
     <table class="table table-hover">
       <thead>
-        <th>Image</th>
         <th>ID</th>
         <th>Drone</th>
         <th>Model</th>
@@ -19,7 +18,6 @@
       <tbody>
         <% @drones.each do |drone| %>
         <tr>
-          <td> <%= image_tag drone.image.to_s if drone.image? %></td>
           <td> <%= drone.id %> </td>
           <td> <%= link_to drone.name, drone_path(drone) %> </td>
           <td> <%= drone.model %> </td>

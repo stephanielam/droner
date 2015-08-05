@@ -30,8 +30,7 @@ body {
 .header {
   width: 100%;
   text-align: center;
-  padding: 70px;
-  height: 360px;
+  padding: 70px 0px 0px 0px;
 }
 
 .footer {
@@ -78,6 +77,7 @@ a:hover{
 }
 
 .rowOne {
+  margin-top: 120px;
   background: rgba(255,255,255,0.9);
   width: 100%;
   padding: 30px 0px;
@@ -99,8 +99,8 @@ a:hover{
 }
 
 .form {
-  margin: 0 auto;
-  text-align:center;
+  margin: 20px 0px;
+  text-align: center;
 }
 
 label {

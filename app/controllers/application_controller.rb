@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   def authenticate
     if !current_client
       flash[:alert] = "You must log in."
-      redirect_to new_sessions_path
+      redirect_to new_session_path
     end
   end
 

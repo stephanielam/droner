@@ -37,18 +37,15 @@ class DronesController < ApplicationController
     end
     redirect_to drones_path
   end
-  
+
   def show
-    @drone = Drone.find(params[:id]) 
+    @drone = Drone.find(params[:id])
   end
 
   def available?
     # check all rentals of drone have checkin dates
     @drone = Drone.find(params[:id])
-    @drone.rentals.each do |rental|
-      return false if (rental.checkin == nil)
-    end
-    true
+    @drone.rentals.empty? || @drone.rentals.last.checkin != nil
   end
 
   def rent
@@ -57,7 +54,7 @@ class DronesController < ApplicationController
       @drone.rentals.create(client: current_client, checkout: DateTime.now)
       flash[:notice] = "You have just rented #{@drone.name}!"
       redirect_to client_path(current_client)
-    else 
+    else
       flash[:notice] = "#{@drone.name} is not available!"
       redirect_to drones_path
     end
@@ -73,7 +70,7 @@ class DronesController < ApplicationController
       @drones = @drones.price_greater_than(100).price_less_than(500)
     when "3"
       @drones = @drones.price_greater_than(500)
-    end 
+    end
     @drones
   end
 

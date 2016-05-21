@@ -5,6 +5,7 @@
     <table class="table table-hover">
       <thead>
         <th>ID</th>
+        <th>Status</th>
         <th>Drone</th>
         <th>Model</th>
         <th>Price</th>
@@ -19,9 +20,15 @@
         <% @drones.each do |drone| %>
         <tr>
           <td> <%= drone.id %> </td>
+          <td> <% if drone.rentals.empty? || drone.rentals.last.checkin != nil %>
+            Available
+            <% else  %>
+            Not Available
+            <% end %>
+          </td>
           <td> <%= link_to drone.name, drone_path(drone) %> </td>
           <td> <%= drone.model %> </td>
-          <td> <%= drone.price %> </td>
+          <td> $<%= drone.price %> </td>
           <td> <%= Rental.where(drone_id: drone.id).count %> </td>
           <td> <%= link_to "Rent", rent_drone_path(drone.id), method: :post %></td>
           <% if current_client && current_client.admin %>
@@ -35,9 +42,9 @@
   </div>
 </div>
 
+<% if current_client && current_client.admin %>
 <div class="rowTwo">
   <div class="container">
-    <% if current_client && current_client.admin %>
     <h1>RENTALS</h1>
     <table class="table table-hover">
       <thead>
@@ -50,8 +57,8 @@
       <tbody>
         <% @rentals.each do |rental| %>
         <tr>
-          <td> <%= rental.client_id %> - <%= Client.find(rental.client_id).username%></td>
-          <td> <%= rental.drone_id %> - <%= Drone.find(rental.drone_id).name %></td>
+          <td> <%= link_to rental.client.username, client_path(rental.client) %></td>
+          <td> <%= link_to rental.drone.name, drone_path(rental.drone) %></td>
           <td> <%= rental.checkout %> </td>
           <td> <%= rental.checkin if rental.checkin%> </td>
           <td> <%= rental.review if rental.review %> </td>
